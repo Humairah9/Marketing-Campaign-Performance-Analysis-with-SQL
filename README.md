@@ -1,6 +1,9 @@
 # Marketing-Campaign-Performance-Analysis-with-SQL
 Using SQL, I analyzed a marketing campaign dataset to uncover insights on campaign reach, ROI, engagement, and conversion performance. I wrote targeted queries to identify top campaigns, effective marketing channels, and responsive demographics.
 
+# Table of Content 
+- [Introduction](https://github.com/Humairah9/Marketing-Campaign-Performance-Analysis-with-SQL/blob/main/README.md#introduction)
+
 ![images (9)](https://github.com/user-attachments/assets/e7a3be68-18c0-4b6d-b1e0-655ea7c1eb50)
 
 #  Introduction
