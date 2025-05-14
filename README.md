@@ -10,6 +10,7 @@ Using SQL, I analyzed a marketing campaign dataset to uncover insights on campai
 - [Financial Metrics](https://github.com/Humairah9/Marketing-Campaign-Performance-Analysis-with-SQL/blob/main/README.md#financial-metrics)
 - [Geographic Targeting](https://github.com/Humairah9/Marketing-Campaign-Performance-Analysis-with-SQL/blob/main/README.md#geographic-targeting)
 - [Dataset Structure](https://github.com/Humairah9/Marketing-Campaign-Performance-Analysis-with-SQL/blob/main/README.md#dataset-structure)
+- [Data Organization](https://github.com/Humairah9/Marketing-Campaign-Performance-Analysis-with-SQL/blob/main/README.md#data-organization)
 
 ![images (9)](https://github.com/user-attachments/assets/e7a3be68-18c0-4b6d-b1e0-655ea7c1eb50)
 
