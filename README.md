@@ -283,7 +283,7 @@ ORDER BY channel_rank;
 .
 ├── README.md
 ├── Marketing Campaign Performance.pdf
-├── SQL Queries.zip            # the 8 query files
+├── Marketing_campaign.sql            # the 8 query files
 └── images/                    # screenshots of query results
 ```
 
