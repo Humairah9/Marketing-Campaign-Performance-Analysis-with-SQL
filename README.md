@@ -30,10 +30,10 @@ This project uses SQL to turn a campaign dataset into answers to practical quest
 
 ## How to Explore This Project
 
-- **Quick look:** see the query screenshots in [SQL Queries and Analysis](#sql-queries-and-analysis).
+- **Quick look:** see the query screenshots in [SQL Queries and Analysis](image).
 - **PDF:** [Download the analysis as PDF](Marketing%20Campaign%20Performance.pdf)
 - **Walkthrough:** [Watch the query demo on Loom](TODO-your-loom-link)
-- **Full script:** download [`SQL Queries.zip`](SQL%20Queries.zip), which holds the 8 query files (`1.sql` to `8.sql`).
+- **Full script:** download [`Marketing_campaign.sql`](Marketing_campaign.sql), which holds the 8 query files.
 - **Run it yourself:** load the dataset into a table called `campaigndata` in TODO-your-database (for example PostgreSQL or MySQL), then run each query file in a SQL client such as pgAdmin, DBeaver or MySQL Workbench.
 
 ## Data Overview and Dataset Structure
