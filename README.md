@@ -1,273 +1,268 @@
-# Marketing-Campaign-Performance-Analysis-with-SQL
-Using SQL, I analyzed a marketing campaign dataset to uncover insights on campaign reach, ROI, engagement, and conversion performance. I wrote targeted queries to identify top campaigns, effective marketing channels, and responsive demographics.
+# Marketing Campaign Performance Analysis with SQL
 
-# Table of Content 
-- [Introduction](https://github.com/Humairah9/Marketing-Campaign-Performance-Analysis-with-SQL/blob/main/README.md#introduction)
-- [Data Overview and Dataset Structure](https://github.com/Humairah9/Marketing-Campaign-Performance-Analysis-with-SQL/blob/main/README.md#data-overview-and-dataset-structure)
-- [Key Variables](https://github.com/Humairah9/Marketing-Campaign-Performance-Analysis-with-SQL/blob/main/README.md#key-variables)
-- [Campaign Details](https://github.com/Humairah9/Marketing-Campaign-Performance-Analysis-with-SQL/blob/main/README.md#campaign-details)
-- [Performance Metrics](https://github.com/Humairah9/Marketing-Campaign-Performance-Analysis-with-SQL/blob/main/README.md#performance-metrics)
-- [Financial Metrics](https://github.com/Humairah9/Marketing-Campaign-Performance-Analysis-with-SQL/blob/main/README.md#financial-metrics)
-- [Geographic Targeting](https://github.com/Humairah9/Marketing-Campaign-Performance-Analysis-with-SQL/blob/main/README.md#geographic-targeting)
-- [Dataset Structure](https://github.com/Humairah9/Marketing-Campaign-Performance-Analysis-with-SQL/blob/main/README.md#dataset-structure)
-- [Data Organization](https://github.com/Humairah9/Marketing-Campaign-Performance-Analysis-with-SQL/blob/main/README.md#data-organization)
-- [SQL Queries and Analysis](https://github.com/Humairah9/Marketing-Campaign-Performance-Analysis-with-SQL/blob/main/README.md#sql-queries-and-analysis)
-- [Conclusion](https://github.com/Humairah9/Marketing-Campaign-Performance-Analysis-with-SQL/blob/main/README.md#conclusion)
-- [Recommendations](https://github.com/Humairah9/Marketing-Campaign-Performance-Analysis-with-SQL/blob/main/README.md#recommendations)
+Using SQL, I analysed a marketing campaign dataset to answer questions about campaign reach, return on investment (ROI), audience engagement, click-through rate (CTR), cost efficiency and channel performance. I wrote 8 queries covering aggregation, sorting, filtering, calculated metrics and window functions.
 
-![images (9)](https://github.com/user-attachments/assets/e7a3be68-18c0-4b6d-b1e0-655ea7c1eb50)
+## Table of Contents
 
-#  Introduction
- In today’s digital landscape, marketing campaigns play a pivotal role in shaping brand visibility,
- driving customer engagement, and ultimately increasing conversions. Companies invest heavily
- in online advertising, leveraging various channels such as Google Ads, social media, email
- marketing, and influencer partnerships to reach their target audiences. However, not all
- campaigns deliver the desired results; some generate significant traction, while others
- underperform, leading to inefficient spending and lost opportunities.
- To maximize return on investment (ROI), businesses must adopt a data-driven approach to
- campaign analysis. This involves evaluating key performance indicators (KPIs) such as
- impressions, clicks, conversion rate, engagement score, cost per conversion, return on
- investment (ROI).
-This study focuses on analyzing a marketing campaign dataset using Structured Query
- Language (SQL) to extract actionable insights. By running targeted SQL queries, we aim to:
-  - Identify the campaigns with the highest impressions to assess audience reach.
-  - Determine which campaign delivered the highest ROI, helping businesses allocate
- budgets more effectively.
-  - Analyze top-performing locations to guide regional marketing strategies.
-  - Evaluate the average engagement score by target audience, ensuring marketing efforts
- are tailored to responsive demographics.
-  - Calculate the overall Click-Through Rate (CTR) to measure how well ads convert views
- into interactions.
-  - Find the most cost-effective campaigns, ensuring optimized ad spend.
-  - Rank marketing channels by total conversions, highlighting the most effective platforms
- for future investment.
+- [Introduction](#introduction)
+- [How to Explore This Project](#how-to-explore-this-project)
+- [Data Overview and Dataset Structure](#data-overview-and-dataset-structure)
+- [SQL Queries and Analysis](#sql-queries-and-analysis)
+- [Key Findings](#key-findings)
+- [Recommendations](#recommendations)
+- [Limitations](#limitations)
+- [Skills Demonstrated](#skills-demonstrated)
+- [Repository Structure](#repository-structure)
 
-By answering these questions, this analysis will provide valuable insights that help marketers
- make data-driven decisions, optimize campaign strategies, and improve overall marketing
- efficiency. Businesses can use these findings to fine-tune ad placements, enhance audience
- targeting, and maximize conversion potential, ensuring higher profitability and reduced
- wasted ad spend.
+## Introduction
 
- # Data Overview and Dataset Structure
- 
- To effectively analyze the performance of marketing campaigns, we use a structured dataset
- containing key performance indicators (KPIs) and campaign-specific attributes. This dataset
- enables businesses to evaluate engagement levels, cost efficiency, and overall campaign
- effectiveness, helping them optimize future marketing strategies.
+Companies spend heavily on online advertising across channels such as Google Ads, email, social media and video. Not every campaign pays off: some earn strong engagement and returns, while others waste budget. Reading campaign data well helps marketers decide where to spend, who to target and which channels to invest in.
 
- # Key Variables
- 
-The dataset captures crucial details about various marketing campaigns, including company
- information, advertising channels, and financial performance metrics. Below is a breakdown of
- the key variables:
- 
- # Campaign Details
- 
- - Campaign_ID (Integer): A unique identifier assigned to each campaign. (Primary Key)
- - Company (String): The name of the company running the campaign.
- - Campaign_Type (String): Specifies the type of marketing campaign (e.g., Email,
- Display, Influencer).
- - Duration (String): The total length of the campaign (e.g., "30 days").
- - Channel_Used (String): The platform where the campaign was executed (e.g., Google
- Ads, YouTube).
- 
- # Performance Metrics
+This project uses SQL to turn a campaign dataset into answers to practical questions. The analysis aims to:
 
- - Impressions (Integer): The total number of times the advertisement was displayed to
- users.
- - Clicks (Integer): The number of times users clicked on the advertisement.
- - Engagement_Score (Integer): A score (ranging from 1 to 10) that measures user
-interaction and engagement with the campaign.
- - Conversion_Rate (Float): The percentage of users who took a desired action (e.g.,
- purchase, sign-up) after interacting with the campaign.
+- Check the reach of each campaign through impressions.
+- Find the campaign with the highest ROI.
+- Find the locations with the most impressions.
+- Compare engagement across target audiences.
+- Measure the overall click-through rate and find campaigns with a strong CTR.
+- Find the most cost-effective campaign.
+- Rank marketing channels by estimated conversions.
 
- # Financial Metrics
- 
- - Acquisition_Cost (Float): The cost incurred by the company to acquire a new customer
- through the campaign.
- - ROI (Return on Investment) (Float): A profitability metric that measures the
- effectiveness of a campaign relative to its cost.
+## How to Explore This Project
 
- # Geographic Targeting
-Location (String): The geographic region where the campaign was targeted.
- 
- # Dataset Structure
- The dataset is structured in a tabular format, where each row represents a unique marketing
- campaign. This ensures that the dataset maintains data integrity and uniqueness while enabling
- efficient querying and analysis.
+- **Quick look:** see the query screenshots in [SQL Queries and Analysis](#sql-queries-and-analysis).
+- **PDF:** [Download the analysis as PDF](Marketing%20Campaign%20Performance.pdf)
+- **Walkthrough:** [Watch the query demo on Loom](TODO-your-loom-link)
+- **Full script:** download [`SQL Queries.zip`](SQL%20Queries.zip), which holds the 8 query files (`1.sql` to `8.sql`).
+- **Run it yourself:** load the dataset into a table called `campaigndata` in TODO-your-database (for example PostgreSQL or MySQL), then run each query file in a SQL client such as pgAdmin, DBeaver or MySQL Workbench.
 
- #  Data Organization:
- 
- - The primary key is Campaign_ID, ensuring each campaign is uniquely identifiable.
- - Categorical variables include Company, Campaign_Type, Channel_Used, and Location.
- - Numerical variables (e.g., Impressions, Clicks, Conversion_Rate, ROI) capture key
- performance metrics.
- - The dataset is optimized for SQL-based queries,allowing for easy filtering, aggregation,
- and performance analysis.
+## Data Overview and Dataset Structure
 
- This structured format enables efficient data retrieval for insights related to campaign
- performance, audience engagement, and cost-effectiveness. By leveraging SQL queries, we
- can uncover trends, rank top-performing campaigns, and optimize marketing spend.
- 
- # SQL Queries and Analysis
- This section provides a detailed breakdown of the SQL queries used to analyze the dataset,
- along with the methods, results, insights, and visual representations.
- 
- # 1. Total Impressions for Each Campaign
- Method: The goal is to determine the total impressions each campaign received. This helps in
- understanding which campaigns had the broadest reach
+The analysis uses one table, `campaigndata`, where each row is a single marketing campaign. `Campaign_ID` is the primary key.
 
- ![1 Sqloutput](https://github.com/user-attachments/assets/1ff46da8-b892-47ad-bc13-1073337ea5e9)
+| Group | Column | Description |
+|---|---|---|
+| Campaign details | Campaign_ID | Unique identifier for each campaign (primary key) |
+| | Company | Company running the campaign |
+| | Campaign_Type | Type of campaign, such as Email, Display or Influencer |
+| | Duration | Length of the campaign, for example "30 days" |
+| | Channel_Used | Platform used, such as Google Ads or YouTube |
+| | Target_Audience | Demographic group the campaign was aimed at |
+| Performance | Impressions | Number of times the ad was displayed |
+| | Clicks | Number of times users clicked the ad |
+| | Engagement_Score | Score from 1 to 10 for user interaction |
+| | Conversion_Rate | Share of users who took the desired action |
+| Financial | Acquisition_Cost | Cost of acquiring customers through the campaign |
+| | ROI | Return on investment of the campaign |
+| Geographic | Location | Region the campaign was aimed at |
 
- The query results reveal that every campaign has exactly 10,000 impressions, suggesting either a
- controlled marketing experiment or a possible data recording issue. In real-world scenarios,
- impressions typically fluctuate based on factors like budget, targeting, and engagement. Since
- impressions only indicate reach and not effectiveness, they do not help in distinguishing high
-performing campaigns from low-performing ones. To gain meaningful insights, further analysis
- of CTR, conversions, and ROI is necessary to determine which campaigns successfully drive user
- engagement and business impact. Additionally, verifying the dataset’s integrity would help ensure
- accurate conclusions.
- 
- # 2. Campaign with the Highest ROI
- Method: ROI (Return on Investment) measures the profitability of a campaign. The goal is to
- identify which campaign had the best financial returns.
+## SQL Queries and Analysis
 
- ![2 Sql - Copy](https://github.com/user-attachments/assets/e8498918-13c5-4a61-b944-d1449a415f27)
+### 1. Total Impressions for Each Campaign
 
- The query identifies the most profitable campaign by selecting the one with the highest ROI. The
- results show that campaign ID 168 from NexGen Systems had the best financial return, with an
- ROI of 8.0. This suggests that the campaign was highly efficient in converting marketing spend
- into revenue. Factors like effective targeting, high conversions, and cost efficiency likely
- contributed to its success. Businesses can use this insight to replicate successful strategies and
- optimize lower-performing campaigns for better profitability.
+**Method:** `SUM` and `GROUP BY` to total the impressions for each campaign and sort them from highest to lowest.
 
-# 3. Top 3Locations with the Most Impressions
- Method: To determine the geographic regions where campaigns were most visible, we calculate
- total impressions per location.
+```sql
+SELECT campaign_id,
+       SUM(impressions) AS totalimpressions
+FROM campaigndata
+GROUP BY campaign_id
+ORDER BY totalimpressions DESC;
+```
 
- ![3 Sql](https://github.com/user-attachments/assets/3f67c425-7361-44a2-b7f0-895e964a40da)
+**Screenshot:**
 
- The query identifies the top three locations with the highest ad impressions, showing where
- marketing campaigns had the most visibility. New York, Miami, and Chicago recorded the
- highest impressions, suggesting strong advertising efforts in these regions. This could be due to
- larger target audiences, higher budgets, or greater engagement potential. While high
- impressions indicate strong visibility, further analysis is needed to assess actual engagement and
- conversions. Businesses can use this insight to optimize regional marketing strategies and
- allocate budgets more effectively.
+![Query 1: total impressions for each campaign](images/q01_total_impressions.png)
 
- #  4. Average Engagement Score by Target Audience
- Method: Engagement Score reflects user interaction levels. By grouping this by Target_Audience,
- we can see which demographics engage the most.
+**Result:** Every campaign has exactly 10,000 impressions.
 
- ![4 Sql](https://github.com/user-attachments/assets/dd4ba258-42aa-42a0-bf9a-5c033d15e705)
+**Insight:** Identical impressions suggest a controlled experiment or a data recording issue, since real campaigns vary with budget and targeting. Impressions only show reach, so they can't separate strong campaigns from weak ones. Clicks, conversions and ROI are needed for that.
 
-  The query identifies which target audiences engage the most with marketing campaigns by
- calculating the average engagement score per demographic. The results show that Men aged 18
-24 have the highest engagement, followed by Women 25-34 and Men 25-34, indicating that
- younger audiences interact more with campaigns. The high engagement for all-age campaigns
- suggests that broad targeting can also be effective. These insights help businesses refine their
- marketing efforts by focusing on highly engaged demographics and adjusting strategies for less
- responsive groups.
+### 2. Campaign with the Highest ROI
 
- # 5. Overall Click-Through Rate (CTR)
- Method: The Click-Through Rate (CTR) measures how effectively a campaign converts
- impressions into clicks, indicating audience interest and engagement.
+**Method:** `ORDER BY ... DESC` with `LIMIT 1` to find the campaign with the best return on investment.
 
- ![5 Sql](https://github.com/user-attachments/assets/1ea22307-aa5e-4686-ab44-e819d306b286)
+```sql
+SELECT Campaign_ID,
+       Company,
+       ROI
+FROM campaigndata
+ORDER BY ROI DESC
+LIMIT 1;
+```
 
-  This query sums up all clicks and impressions across the dataset and computes the overall CTR,
- which is approximately 9.98%. A high CTR suggests that the campaigns are well-targeted and
- compelling, while a low CTR could indicate poor ad relevance, ineffective messaging, or weak
- call-to-action elements. This insight is valuable for assessing overall campaign performance.
- Businesses can improve CTR by refining their ad copy, visuals, and targeting strategies to
- attract more engagement from users.
- 
- # 6. Most Cost-Effective Campaign
- Method: This query calculates the Cost per Conversion, which indicates how much money is
- spent on acquiring a single conversion (such as a purchase or sign-up).
+**Screenshot:**
 
- ![6 Sql](https://github.com/user-attachments/assets/b264058a-8cca-4d7a-976b-7ce1cb9e2a83)
+![Query 2: campaign with the highest ROI](images/q02_highest_roi.png)
 
- The results are sorted in ascending order to identify the campaign with the lowest cost per
- conversion, meaning it is the most cost-effective. According to the output, the most efficient
- campaign belongs to Alpha Innovations (Campaign ID: 101103) with a cost per conversion of
- 33,346.67. This insight helps businesses optimize their marketing spend by focusing on campaigns
- that deliver high conversions at a lower cost, while re-evaluating or discontinuing less efficient
- campaigns.
- 
- # 7. Campaigns with CTR Above a Threshold (5%)
- Method: This query calculates the Click-Through Rate (CTR) for each marketing campaign.
- CTRmeasures how often users clicked on an ad after seeing it and is an important metric for
- evaluating campaign effectiveness.
+**Result:** Campaign 168 from NexGen Systems has the highest ROI, at 8.0.
 
- ![7 Sql](https://github.com/user-attachments/assets/8f5790f7-5ed8-4191-ad26-f67c72a4ce96)
+**Insight:** This campaign turned spend into returns more efficiently than any other, which makes it the best candidate to study and copy. `LIMIT 1` shows only one row, so if two campaigns tied for the top ROI, only one would appear.
 
-The table displays CTR values for different campaigns and companies. Higher CTR values
- indicate that the campaign successfully engaged the audience, leading to more clicks. For example,
- Innovate Industries (CampaignID:1)achievedaCTRof26.33%,whichissignificantlyhigher
- than some other campaigns. This suggests that the campaign was highly engaging, possibly due to
- better targeting, ad design, or messaging. On the other hand, some campaigns have much lower
- CTRs, indicating the need for optimization in terms of audience targeting, ad creatives, or
- placement. This insight helps businesses identify high-performing campaigns and adjust strategies for
- lower-performing ones to improve overall engagement and return on investment.
- 
- # 8. Channels by Total Conversions
- This query analyzes the total conversions generated by different marketing channels and ranks
- them based on their performance. The SUM(conversion_rate) function calculates the total
- number of conversions for each channel, while the RANK() function assigns a rank based on the
- highest to lowest conversion totals.
+### 3. Top 3 Locations by Impressions
 
- ![8 Sql](https://github.com/user-attachments/assets/5cb6cbff-e6cb-424d-ae5d-4f247b4beba8)
+**Method:** `SUM`, `GROUP BY` and `LIMIT 3` to total impressions for each location and keep the top three.
 
-From the results:
- - Email ranks first with 2697.38 total conversions, making it the most effective channel in
- driving conversions.
- - Google Ads follows closely behind with 2681.24 conversions, suggesting that paid search
- is also a strong performer.
- - Website, YouTube, Instagram, and Facebook come next in descending order of
- effectiveness, with Facebook ranking last at 2625.27 conversions.
+```sql
+SELECT Location,
+       SUM(Impressions) AS TotalImpressions
+FROM campaigndata
+GROUP BY Location
+ORDER BY TotalImpressions DESC
+LIMIT 3;
+```
 
- This ranking helps businesses determine which marketing channels are driving the most
- conversions, allowing them to prioritize high-performing channels and optimize
- underperformingones.EmailandGoogleAdsappeartobethemosteffective,whilesocial media
- platforms like Facebook and Instagram generate fewer conversions in comparison.
+**Screenshot:**
 
-# Conclusion:
- The SQL queries provide valuable insights into campaign performance across multiple
- dimensions, including impressions, engagement, conversions, and cost efficiency. From the
- analysis, several key takeaways emerge:
-- CampaignReach&Visibility: Certain locations (e.g., New York, Miami, and Chicago)
- generated the highest total impressions, indicating strong audience exposure.
-- Engagement Trends: Men aged 18-24 exhibited the highest engagement scores,
- suggesting they are the most responsive demographic.
-- Click-Through Rate (CTR): The overall CTR of the campaigns is 9.98%, indicating a
- reasonable level of ad effectiveness in driving user clicks.
-- ReturnonInvestment (ROI): NexGen Systems' campaign had the highest ROI, making
- it the most profitable investment.
-- Conversion Performance by Channel: Email and Google Ads generated the highest
- total conversions, while Facebook had the lowest performance, suggesting variations in
- effectiveness across different marketing channels.
-- CostPerConversion: Alpha Innovations' campaign had the lowest cost per conversion,
- making it the most cost-effective campaign.
+![Query 3: top 3 locations by impressions](images/q03_top_locations.png)
 
-# Recommendations:
- Basedonthesefindings, the following strategies are recommended to optimize future campaigns:
-- Invest in High-Performing Locations & Demographics: Since New York, Miami, and
- Chicago yielded the most impressions, increasing ad spend in these regions could
- maximize visibility. Additionally, campaigns targeting Men 18-24 should be prioritized,
- as they engage the most.
-- Optimize Low-Performing Channels: Facebook and Instagram had the lowest total
- conversions. Revisiting ad creatives, targeting strategies, and budget allocations can help
- improve their effectiveness.
-- Enhance Click-Through Rate (CTR): Despite a decent CTR, there is room for
- improvement. A/B testing ad creatives, refining CTAs, and improving audience targeting
- could increase click rates.
-- Maximize High ROI Campaigns: Since NexGen Systems demonstrated the best ROI,
- analyzing its strategy and applying similar tactics to lower-performing campaigns can help
- improve profitability.
-- Lower Cost Per Conversion: Since Alpha Innovations had the lowest cost per
- conversion, replicating its efficient cost strategies across other campaigns can improve
- cost-effectiveness.
-- LeverageEmail&GoogleAds:Thesechannels drive the most conversions, so increasing
- investments in email marketing and paid search campaigns may lead to better overall
- results.
+**Result:** New York, Miami and Chicago have the most impressions.
+
+**Insight:** Every campaign has exactly 10,000 impressions (query 1), so a location's total reflects how many campaigns ran there, not how well they performed. These three cities simply had the most campaigns.
+
+### 4. Average Engagement Score by Target Audience
+
+**Method:** `AVG` and `GROUP BY` to compare engagement across audiences.
+
+```sql
+SELECT target_audience,
+       AVG(engagement_score) AS avgengagementscore
+FROM campaigndata
+GROUP BY target_audience
+ORDER BY avgengagementscore DESC;
+```
+
+**Screenshot:**
+
+![Query 4: average engagement score by target audience](images/q04_engagement_by_audience.png)
+
+**Result:** Men aged 18-24 have the highest average engagement, followed by Women aged 25-34 and Men aged 25-34.
+
+**Insight:** Younger audiences interact most with these campaigns, and campaigns aimed at all ages also engage well, so broad targeting can work too.
+
+### 5. Overall Click-Through Rate (CTR)
+
+**Method:** `SUM` of clicks divided by `SUM` of impressions, multiplied by `100.0` so SQL works in decimals and not whole numbers.
+
+```sql
+SELECT (SUM(Clicks) * 100.0 / SUM(Impressions)) AS OverallCTR
+FROM campaigndata;
+```
+
+**Screenshot:**
+
+![Query 5: overall click-through rate](images/q05_overall_ctr.png)
+
+**Result:** The overall CTR is about 9.98%.
+
+**Insight:** Roughly 1 in 10 impressions leads to a click, which suggests the campaigns are fairly well targeted. There is still room to improve through better ad copy, visuals and calls to action.
+
+### 6. Most Cost-Effective Campaign
+
+**Method:** Cost per conversion is the acquisition cost divided by the number of conversions. Conversions are estimated as clicks multiplied by the conversion rate. Campaigns with no conversions are excluded to avoid dividing by zero, and results are sorted from lowest to highest cost.
+
+```sql
+SELECT campaign_id,
+       company,
+       ROUND(CAST(acquisition_cost / (clicks * conversion_rate) AS NUMERIC), 2) AS cost_per_conversion
+FROM campaigndata
+WHERE clicks * conversion_rate > 0
+ORDER BY cost_per_conversion ASC
+LIMIT 1;
+```
+
+**Screenshot:**
+
+![Query 6: most cost-effective campaign](images/q06_cost_per_conversion.png)
+
+**Result:** The most cost-effective campaign is **TODO-company (Campaign ID TODO-id)**, at **TODO-value** per conversion.
+
+**Insight:** Campaigns with a low cost per conversion get more customers for the same budget. Their approach is worth copying, and the most expensive campaigns are worth reviewing.
+
+### 7. Campaigns with a CTR Above 5%
+
+**Method:** A calculated CTR for each campaign (`clicks * 100.0 / impressions`) with a `WHERE` filter to keep only those above 5%.
+
+```sql
+SELECT campaign_id,
+       company,
+       (clicks * 100.0 / impressions) AS ctr
+FROM campaigndata
+WHERE (clicks * 100.0 / impressions) > 5;
+```
+
+**Screenshot:**
+
+![Query 7: campaigns with a CTR above 5%](images/q07_ctr_above_5.png)
+
+**Result:** Only campaigns with a CTR above 5% are shown, so every row here is a strong performer. For example, Innovate Industries (Campaign 1) has a CTR of 26.33%.
+
+**Insight:** Campaigns with a high CTR drew users in through good targeting, design or messaging. Campaigns missing from this list fall at or below 5% and are the ones to optimise.
+
+### 8. Channels Ranked by Estimated Conversions
+
+**Method:** Conversions for each campaign are estimated as clicks multiplied by the conversion rate, then added up for each channel. The `RANK()` window function orders the channels from most to fewest conversions.
+
+```sql
+SELECT channel_used,
+       ROUND(CAST(SUM(clicks * conversion_rate) AS NUMERIC), 0) AS total_conversions,
+       RANK() OVER (ORDER BY SUM(clicks * conversion_rate) DESC) AS channel_rank
+FROM campaigndata
+GROUP BY channel_used
+ORDER BY channel_rank;
+```
+
+**Screenshot:**
+
+![Query 8: channels ranked by estimated conversions](images/q08_channel_ranking.png)
+
+**Result:** **TODO-channel** ranks first with about **TODO-number** conversions, followed by **TODO-channel** and **TODO-channel**. **TODO-channel** ranks last.
+
+**Insight:** This ranking shows which channels deserve more budget and which need a rethink.
+
+## Key Findings
+
+- Every campaign has the same 10,000 impressions, so reach doesn't separate strong campaigns from weak ones.
+- **NexGen Systems (Campaign 168)** has the highest ROI, at 8.0.
+- **New York, Miami and Chicago** had the most impressions, because they had the most campaigns.
+- **Men aged 18-24** are the most engaged audience.
+- The overall CTR is **9.98%**.
+- **TODO-company** has the lowest cost per conversion.
+- **TODO-channel** leads on estimated conversions and **TODO-channel** is last.
+
+## Recommendations
+
+1. **Study and copy the highest-ROI campaign.** Look at what NexGen Systems did on targeting, channel and creative, and apply it to weaker campaigns.
+2. **Prioritise engaged audiences.** Men aged 18-24 engage the most, so give them more of the budget and test what drives that response in other groups.
+3. **Improve CTR.** Test ad copy, visuals and calls to action, especially in campaigns below the 5% mark.
+4. **Reduce cost per conversion.** Copy the approach of TODO-company, the most cost-effective campaign, in higher-cost campaigns.
+5. **Shift budget toward the top channels** (TODO-channel and TODO-channel) and review the creative and targeting of the lowest-ranked channel.
+6. **Check the data before acting.** The identical impressions need explaining before major budget decisions rest on this dataset.
+
+## Limitations
+
+- Every campaign has the same impressions, which suggests the data is synthetic or was recorded in a simplified way.
+- Conversions are **estimated** as clicks multiplied by the conversion rate, because the dataset has no conversion counts.
+- Cost per conversion assumes `Acquisition_Cost` is the total cost of each campaign.
+- Location rankings reflect the number of campaigns in each place, not performance.
+- Queries 2 and 6 use `LIMIT 1`, so ties for first place would not show.
+
+## Skills Demonstrated
+
+`SELECT` · `GROUP BY` · `ORDER BY` · `WHERE` · `LIMIT` · `SUM` / `AVG` · `CAST` · `ROUND` · calculated metrics (CTR, cost per conversion) · `RANK() OVER`
+
+**Tool:** TODO-your-database and SQL client
+
+## Repository Structure
+
+```
+.
+├── README.md
+├── Marketing Campaign Performance.pdf
+├── SQL Queries.zip            # the 8 query files
+└── images/                    # screenshots of query results
+```
+
+## Author
+
+**Aisha Hamza** | [LinkedIn](TODO-your-linkedin-link) | [Email](mailto:TODO-your-email)
