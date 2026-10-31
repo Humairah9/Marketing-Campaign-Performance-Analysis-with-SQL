@@ -1,6 +1,6 @@
 # Marketing Campaign Performance Analysis with SQL
 
-Using SQL, I analysed a marketing campaign dataset to answer questions about campaign reach, return on investment (ROI), audience engagement, click-through rate (CTR), cost efficiency and channel performance. I wrote 8 queries covering aggregation, sorting, filtering, calculated metrics and window functions.
+Using SQL, I analysed a marketing campaign dataset of 200,005 campaigns to answer questions about campaign reach, return on investment (ROI), audience engagement, click-through rate (CTR), cost efficiency and channel performance. I wrote 8 queries covering aggregation, sorting, filtering, calculated metrics and window functions.
 
 ## Table of Contents
 
@@ -38,22 +38,24 @@ This project uses SQL to turn a campaign dataset into answers to practical quest
 
 ## Data Overview and Dataset Structure
 
-The analysis uses one table, `campaigndata`, where each row is a single marketing campaign. `Campaign_ID` is the primary key.
+The analysis uses one table, `campaigndata`, with **200,005 rows**. Each row is a single marketing campaign, and `Campaign_ID` is the primary key. The data has no missing values. It covers 5 companies, 6 channels, 5 target audiences and 5 locations.
 
 | Group | Column | Description |
 |---|---|---|
 | Campaign details | Campaign_ID | Unique identifier for each campaign (primary key) |
 | | Company | Company running the campaign |
 | | Campaign_Type | Type of campaign, such as Email, Display or Influencer |
-| | Duration | Length of the campaign, for example "30 days" |
-| | Channel_Used | Platform used, such as Google Ads or YouTube |
 | | Target_Audience | Demographic group the campaign was aimed at |
-| Performance | Impressions | Number of times the ad was displayed |
-| | Clicks | Number of times users clicked the ad |
+| | Duration | Length of the campaign, for example "30 days" |
+| | Channel_Used | Platform used: Email, Website, Google Ads, YouTube, Instagram or Facebook |
+| | Date | Date of the campaign |
+| | Customer_Segment | Customer interest group, such as Health & Wellness |
+| Performance | Impressions | Number of times the ad was displayed (1,000 to 10,000) |
+| | Clicks | Number of times users clicked the ad (100 to 1,000) |
 | | Engagement_Score | Score from 1 to 10 for user interaction |
-| | Conversion_Rate | Share of users who took the desired action |
-| Financial | Acquisition_Cost | Cost of acquiring customers through the campaign |
-| | ROI | Return on investment of the campaign |
+| | Conversion_Rate | Share of clicks that led to the desired action, stored as a fraction (0.01 to 0.15) |
+| Financial | Acquisition_Cost | Cost of acquiring customers through the campaign (5,000 to 20,000) |
+| | ROI | Return on investment of the campaign (2.0 to 8.0) |
 | Geographic | Location | Region the campaign was aimed at |
 
 ## SQL Queries and Analysis
@@ -74,9 +76,9 @@ ORDER BY totalimpressions DESC;
 
 ![Query 1: total impressions for each campaign](images/q01_total_impressions.png)
 
-**Result:** Every campaign has exactly 10,000 impressions.
+**Result:** The campaigns at the top of the list each have 10,000 impressions, which is the highest value in the data. Across all 200,005 campaigns, impressions range from 1,000 to 10,000, with an average of about 5,500.
 
-**Insight:** Identical impressions suggest a controlled experiment or a data recording issue, since real campaigns vary with budget and targeting. Impressions only show reach, so they can't separate strong campaigns from weak ones. Clicks, conversions and ROI are needed for that.
+**Insight:** Because `Campaign_ID` is unique, this query lists each campaign's own impressions. Impressions only show reach, so they can't tell strong campaigns from weak ones. Clicks, conversions and ROI are needed for that.
 
 ### 2. Campaign with the Highest ROI
 
@@ -95,9 +97,9 @@ LIMIT 1;
 
 ![Query 2: campaign with the highest ROI](images/q02_highest_roi.png)
 
-**Result:** Campaign 168 from NexGen Systems has the highest ROI, at 8.0.
+**Result:** Campaign 168 from NexGen Systems is returned, with an ROI of 8.0.
 
-**Insight:** This campaign turned spend into returns more efficiently than any other, which makes it the best candidate to study and copy. `LIMIT 1` shows only one row, so if two campaigns tied for the top ROI, only one would appear.
+**Insight:** The highest ROI in the data is 8.0, but **160 campaigns share it**, so campaign 168 is the first of many ties and not a clear winner. `LIMIT 1` hides ties, so a better question is what the 160 top campaigns have in common. Among them, NexGen Systems has the most (38), followed by Innovate Industries (33) and TechCorp (31).
 
 ### 3. Top 3 Locations by Impressions
 
@@ -116,9 +118,15 @@ LIMIT 3;
 
 ![Query 3: top 3 locations by impressions](images/q03_top_locations.png)
 
-**Result:** New York, Miami and Chicago have the most impressions.
+**Result:**
 
-**Insight:** Every campaign has exactly 10,000 impressions (query 1), so a location's total reflects how many campaigns ran there, not how well they performed. These three cities simply had the most campaigns.
+| Rank | Location | Total impressions |
+|---|---|---|
+| 1 | New York | 221,359,756 |
+| 2 | Miami | 221,347,726 |
+| 3 | Chicago | 219,999,352 |
+
+**Insight:** The gap between the locations is tiny. Each of the five locations ran about 40,000 campaigns, and New York leads Los Angeles, the fourth-ranked location, by under 1%. Total impressions here mostly reflect how many campaigns ran in each place, so no location clearly stands out.
 
 ### 4. Average Engagement Score by Target Audience
 
@@ -136,9 +144,17 @@ ORDER BY avgengagementscore DESC;
 
 ![Query 4: average engagement score by target audience](images/q04_engagement_by_audience.png)
 
-**Result:** Men aged 18-24 have the highest average engagement, followed by Women aged 25-34 and Men aged 25-34.
+**Result:**
 
-**Insight:** Younger audiences interact most with these campaigns, and campaigns aimed at all ages also engage well, so broad targeting can work too.
+| Target audience | Average engagement score |
+|---|---|
+| Men 18-24 | 5.52 |
+| Women 25-34 | 5.49 |
+| Men 25-34 | 5.49 |
+| All Ages | 5.49 |
+| Women 35-44 | 5.49 |
+
+**Insight:** Men aged 18-24 rank first, but the gap is only about 0.03 points on a 10-point scale. All five audiences engage at almost the same level, so audience choice alone doesn't explain engagement in this data.
 
 ### 5. Overall Click-Through Rate (CTR)
 
@@ -175,9 +191,9 @@ LIMIT 1;
 
 ![Query 6: most cost-effective campaign](images/q06_cost_per_conversion.png)
 
-**Result:** The most cost-effective campaign is **TODO-company (Campaign ID TODO-id)**, at **TODO-value** per conversion.
+**Result:** The most cost-effective campaign is **Alpha Innovations (Campaign ID 118451)**, at about **34.22** per conversion. It has a low acquisition cost (5,107) and a high number of clicks (995) with the top conversion rate (0.15).
 
-**Insight:** Campaigns with a low cost per conversion get more customers for the same budget. Their approach is worth copying, and the most expensive campaigns are worth reviewing.
+**Insight:** Campaigns with a low cost per conversion get more customers for the same budget. This campaign combines a low cost with strong clicks and conversion rate, and no other campaign shares its exact value.
 
 ### 7. Campaigns with a CTR Above 5%
 
@@ -195,9 +211,9 @@ WHERE (clicks * 100.0 / impressions) > 5;
 
 ![Query 7: campaigns with a CTR above 5%](images/q07_ctr_above_5.png)
 
-**Result:** Only campaigns with a CTR above 5% are shown, so every row here is a strong performer. For example, Innovate Industries (Campaign 1) has a CTR of 26.33%.
+**Result:** 160,332 of the 200,005 campaigns (about 80%) have a CTR above 5%. For example, Innovate Industries (Campaign 1) has a CTR of 26.33%.
 
-**Insight:** Campaigns with a high CTR drew users in through good targeting, design or messaging. Campaigns missing from this list fall at or below 5% and are the ones to optimise.
+**Insight:** Most campaigns clear the 5% mark, so it is a low bar for this dataset. The highest CTRs are close to 99%, which is unrealistic for real ads and points to a simulated dataset. A higher cut-off would be more useful for picking out top performers.
 
 ### 8. Channels Ranked by Estimated Conversions
 
@@ -216,36 +232,44 @@ ORDER BY channel_rank;
 
 ![Query 8: channels ranked by estimated conversions](images/q08_channel_ranking.png)
 
-**Result:** **TODO-channel** ranks first with about **TODO-number** conversions, followed by **TODO-channel** and **TODO-channel**. **TODO-channel** ranks last.
+**Result:**
 
-**Insight:** This ranking shows which channels deserve more budget and which need a rethink.
+| Rank | Channel | Estimated conversions |
+|---|---|---|
+| 1 | Email | 1,485,394 |
+| 2 | Website | 1,477,746 |
+| 3 | Google Ads | 1,468,814 |
+| 4 | YouTube | 1,463,621 |
+| 5 | Instagram | 1,462,864 |
+| 6 | Facebook | 1,446,295 |
+
+**Insight:** Email ranks first and Facebook last, but the ranking mostly follows the number of campaigns each channel ran (Email 33,599, Facebook 32,820). Per campaign, every channel averages about 44 conversions, and Website is marginally the highest. So the channels perform almost identically, and a total-conversions ranking alone can mislead.
 
 ## Key Findings
 
-- Every campaign has the same 10,000 impressions, so reach doesn't separate strong campaigns from weak ones.
-- **NexGen Systems (Campaign 168)** has the highest ROI, at 8.0.
-- **New York, Miami and Chicago** had the most impressions, because they had the most campaigns.
-- **Men aged 18-24** are the most engaged audience.
-- The overall CTR is **9.98%**.
-- **TODO-company** has the lowest cost per conversion.
-- **TODO-channel** leads on estimated conversions and **TODO-channel** is last.
+- The dataset has **200,005 campaigns**, with impressions from 1,000 to 10,000 each.
+- The overall CTR is **9.98%**, and about 80% of campaigns have a CTR above 5%.
+- The top ROI is 8.0, but **160 campaigns tie** for it, so campaign 168 (NexGen Systems) is not uniquely the best.
+- **Alpha Innovations (Campaign 118451)** is the most cost-effective campaign, at about 34.22 per conversion.
+- **Email** leads on total estimated conversions and **Facebook** is last, but this follows campaign volume. Average conversions per campaign are about 44 for every channel.
+- Locations and audiences perform very similarly. **Men 18-24** have the highest engagement (5.52), but only 0.03 points ahead of the others.
 
 ## Recommendations
 
-1. **Study and copy the highest-ROI campaign.** Look at what NexGen Systems did on targeting, channel and creative, and apply it to weaker campaigns.
-2. **Prioritise engaged audiences.** Men aged 18-24 engage the most, so give them more of the budget and test what drives that response in other groups.
-3. **Improve CTR.** Test ad copy, visuals and calls to action, especially in campaigns below the 5% mark.
-4. **Reduce cost per conversion.** Copy the approach of TODO-company, the most cost-effective campaign, in higher-cost campaigns.
-5. **Shift budget toward the top channels** (TODO-channel and TODO-channel) and review the creative and targeting of the lowest-ranked channel.
-6. **Check the data before acting.** The identical impressions need explaining before major budget decisions rest on this dataset.
+1. **Study the 160 campaigns that tie for the top ROI.** Look at what they share on company, channel, audience and duration before copying any single campaign.
+2. **Compare channels per campaign, not in total.** Total conversions mostly reflect how many campaigns a channel ran, so use average conversions or cost per conversion when moving budget.
+3. **Copy the approach of Campaign 118451.** Its low acquisition cost, high clicks and top conversion rate make it the strongest cost-efficiency example.
+4. **Raise the CTR bar.** A 5% threshold includes 80% of campaigns, so use a stricter cut-off such as the top 10% to find real leaders.
+5. **Test audiences before shifting budget.** Engagement differs by only 0.03 points across audiences, so run A/B tests before favouring Men 18-24.
+6. **Check the data before acting.** Very high CTRs and evenly spread group sizes suggest simulated data, so confirm the source before large budget decisions.
 
 ## Limitations
 
-- Every campaign has the same impressions, which suggests the data is synthetic or was recorded in a simplified way.
+- The group sizes and value ranges are very even, which suggests the dataset is synthetic, so results may not reflect real campaign behaviour.
+- Differences between locations, audiences and channels are small, so rankings are weak evidence of real performance gaps.
 - Conversions are **estimated** as clicks multiplied by the conversion rate, because the dataset has no conversion counts.
 - Cost per conversion assumes `Acquisition_Cost` is the total cost of each campaign.
-- Location rankings reflect the number of campaigns in each place, not performance.
-- Queries 2 and 6 use `LIMIT 1`, so ties for first place would not show.
+- Queries 2 and 6 use `LIMIT 1`, so ties for first place don't show. This matters for query 2, where 160 campaigns tie.
 
 ## Skills Demonstrated
 
