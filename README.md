@@ -74,7 +74,7 @@ ORDER BY totalimpressions DESC;
 
 **Screenshot:**
 
-![Query 1: total impressions for each campaign](images/q01_total_impressions.png)
+![Query 1: total impressions for each campaign](image/q01_total_impressions.png)
 
 **Result:** The campaigns at the top of the list each have 10,000 impressions, which is the highest value in the data. Across all 200,005 campaigns, impressions range from 1,000 to 10,000, with an average of about 5,500.
 
@@ -95,7 +95,7 @@ LIMIT 1;
 
 **Screenshot:**
 
-![Query 2: campaign with the highest ROI](images/q02_highest_roi.png)
+![Query 2: campaign with the highest ROI](image/q02_highest_roi.png)
 
 **Result:** Campaign 168 from NexGen Systems is returned, with an ROI of 8.0.
 
@@ -116,7 +116,7 @@ LIMIT 3;
 
 **Screenshot:**
 
-![Query 3: top 3 locations by impressions](images/q03_top_locations.png)
+![Query 3: top 3 locations by impressions](image/q03_top_locations.png)
 
 **Result:**
 
@@ -142,7 +142,7 @@ ORDER BY avgengagementscore DESC;
 
 **Screenshot:**
 
-![Query 4: average engagement score by target audience](images/q04_engagement_by_audience.png)
+![Query 4: average engagement score by target audience](image/q04_engagement_by_audience.png)
 
 **Result:**
 
@@ -167,7 +167,7 @@ FROM campaigndata;
 
 **Screenshot:**
 
-![Query 5: overall click-through rate](images/q05_overall_ctr.png)
+![Query 5: overall click-through rate](image/q05_overall_ctr.png)
 
 **Result:** The overall CTR is about 9.98%.
 
@@ -189,7 +189,7 @@ LIMIT 1;
 
 **Screenshot:**
 
-![Query 6: most cost-effective campaign](images/q06_cost_per_conversion.png)
+![Query 6: most cost-effective campaign](image/q06_cost_per_conversion.png)
 
 **Result:** The most cost-effective campaign is **Alpha Innovations (Campaign ID 118451)**, at about **34.22** per conversion. It has a low acquisition cost (5,107) and a high number of clicks (995) with the top conversion rate (0.15).
 
@@ -209,7 +209,7 @@ WHERE (clicks * 100.0 / impressions) > 5;
 
 **Screenshot:**
 
-![Query 7: campaigns with a CTR above 5%](images/q07_ctr_above_5.png)
+![Query 7: campaigns with a CTR above 5%](image/q07_ctr_above_5.png)
 
 **Result:** 160,332 of the 200,005 campaigns (about 80%) have a CTR above 5%. For example, Innovate Industries (Campaign 1) has a CTR of 26.33%.
 
@@ -230,7 +230,7 @@ ORDER BY channel_rank;
 
 **Screenshot:**
 
-![Query 8: channels ranked by estimated conversions](images/q08_channel_ranking.png)
+![Query 8: channels ranked by estimated conversions](image/q08_channel_ranking.png)
 
 **Result:**
 
@@ -275,14 +275,6 @@ ORDER BY channel_rank;
 
 `SELECT` · `GROUP BY` · `ORDER BY` · `WHERE` · `LIMIT` · `SUM` / `AVG` · `CAST` · `ROUND` · calculated metrics (CTR, cost per conversion) · `RANK() OVER`
 
-## How to Explore This Project
-
-- **Quick look:** see the query screenshots in [SQL Queries and Analysis](#sql-queries-and-analysis).
-- **PDF:** [Download the analysis as PDF](Marketing%20Campaign%20Performance.pdf)
-- **Walkthrough:** [Watch the query demo on Loom](your-loom-link)
-- **Full script:** download [`SQL Queries.zip`](SQL%20Queries.zip), which holds the 8 query files (`1.sql` to `8.sql`).
-- **Run it yourself:** load the dataset into a table called `campaigndata` in your database (for example PostgreSQL or MySQL), then run each query file in a SQL client such as pgAdmin, DBeaver or MySQL Workbench.
-
 **Tool:** TODO-your-database and SQL client
 
 ## Repository Structure
@@ -297,4 +289,4 @@ ORDER BY channel_rank;
 
 ## Author
 
-**Aisha Hamza** | [LinkedIn](TODO-your-linkedin-link) | [Email](mailto:TODO-your-email)
+**Aisha Hamza** | [LinkedIn](https://www.linkedin.com/in/aisha-hamza-a21188187/) | [Email](hamzaaisha798@gmail.com)
