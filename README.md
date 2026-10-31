@@ -275,6 +275,14 @@ ORDER BY channel_rank;
 
 `SELECT` · `GROUP BY` · `ORDER BY` · `WHERE` · `LIMIT` · `SUM` / `AVG` · `CAST` · `ROUND` · calculated metrics (CTR, cost per conversion) · `RANK() OVER`
 
+## How to Explore This Project
+
+- **Quick look:** see the query screenshots in [SQL Queries and Analysis](#sql-queries-and-analysis).
+- **PDF:** [Download the analysis as PDF](Marketing%20Campaign%20Performance.pdf)
+- **Walkthrough:** [Watch the query demo on Loom](your-loom-link)
+- **Full script:** download [`SQL Queries.zip`](SQL%20Queries.zip), which holds the 8 query files (`1.sql` to `8.sql`).
+- **Run it yourself:** load the dataset into a table called `campaigndata` in your database (for example PostgreSQL or MySQL), then run each query file in a SQL client such as pgAdmin, DBeaver or MySQL Workbench.
+
 **Tool:** TODO-your-database and SQL client
 
 ## Repository Structure
